@@ -25,23 +25,11 @@ public class Mesa {
     }
 
     public int esquerda(int indice_filosofo) {
-        int esquerdo;
-        if (indice_filosofo == PRIMEIRO_FILOSOFO) {
-            esquerdo = ULTIMO_FILOSOFO;
-        } else {
-            esquerdo = indice_filosofo - 1;
-        }
-        return esquerdo;
+        return (indice_filosofo + QTD_FILOSOFOS - 1) % QTD_FILOSOFOS;
     }
 
     public int direita(int indice_filosofo) {
-        int direito;
-        if (indice_filosofo == ULTIMO_FILOSOFO) {
-            direito = PRIMEIRO_FILOSOFO;
-        } else {
-            direito = indice_filosofo + 1;
-        }
-        return direito;
+        return (indice_filosofo + 1) % QTD_FILOSOFOS;
     }
 
     public void pegarTalheres(int indice_filosofo) {
@@ -97,6 +85,6 @@ public class Mesa {
 
     public boolean aptoAComer(int indice_filosofo) {
         return estadosAtuais[direita(indice_filosofo)] != Estado.COMENDO
-                || estadosAtuais[esquerda(indice_filosofo)] != Estado.COMENDO;
+                && estadosAtuais[esquerda(indice_filosofo)] != Estado.COMENDO;
     }
 }
