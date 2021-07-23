@@ -2,7 +2,7 @@ package sem_impl;
 
 public class Filosofo implements Runnable {
 
-    final static int TEMPO_MAXIMO = 1000;
+    final static int TEMPO_MAXIMO = 2000;
     
     private int id;
     private String nome;
